@@ -10,9 +10,9 @@
 <body>
 <header>
     <ul>
-        <li><a href="{% url 'article_list' %}">All articles</a></li>
-        <li><a href="{% url 'user_list' %}">Users</a></li>
-        <li>My articles</li>
+        <a href="{% url 'article_list' %}"><li>All articles</li></a>
+        <a href="{% url 'user_list' %}"><li>Users</li></a>
+<!--        <li>My articles</li>-->
     </ul>
 </header>
 {% block main %}

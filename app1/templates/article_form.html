@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block style %}
+<style>
+        main {
+            position: absolute;
+            top: 12mm;
+            width: 90%;
+            padding: 5%;
+        }
+        main h1 {
+            text-align: center;
+        }
+        main img {
+            width: 50%;
+            margin-left: 25%;
+            border-radius: 3px;
+            box-shadow: 0px 0px 10px;
+        }
+
+</style>
+{% endblock %}
+
+{% block main %}
+<main>
+    <h1>{{title}}</h1>
+    <img src="{{ image_url }}"/>
+    <p>{{ content }}</p>
+    <ul>
+        {% for comment in comment_list %}
+        <li>
+            <hr>
+            <h3>{{ comment.user_id }}</h3>
+            <p>{{ comment.text }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}
+

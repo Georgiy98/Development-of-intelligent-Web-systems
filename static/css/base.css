@@ -1,0 +1,26 @@
+body {
+    margin: 0px;
+}
+header {
+    width: 100%;
+    height: 12mm;
+    position: fixed;
+    background-color: slategray;
+    box-shadow: 0 0 20px;
+    z-index: 1;
+}
+header ul {
+    width: 100%;
+    margin: 0px;
+    height: 12mm;
+    list-style-type: none;
+}
+header ul li {
+    float: left;
+    padding: 1mm 10mm 1mm 10mm;
+    border-right: 2px solid gray;
+    font-size: 2em;
+}
+header ul li:hover {
+    background-color: darkslategrey;
+}

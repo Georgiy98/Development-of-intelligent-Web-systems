@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
+{% load static i18n %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/article_form.css' %}">
 {% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block main %}
 <main>
     <h1>{{title}}</h1>
     <img src="{{ image_url }}"/>
-    <p>{{ content }}</p>
+    <br>
+    {{ content|safe }}
     <ul>
         {% for comment in comment_list %}
         <li>
@@ -19,5 +23,14 @@
         {% endfor %}
     </ul>
 </main>
+<aside class="right">
+    <h2>{% trans 'See also' %}</h2>
+    {% for article in similar_articles %}
+    <a href="{% url 'article_form' article.pk %}">
+        <li>{{ article.title }}</li>
+    </a>
+    <hr>
+    {% endfor %}
+</aside>
 {% endblock %}
 

@@ -1,19 +1,38 @@
-{% load static %}
-
+{% load static i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block style %} {% endblock %}
 </head>
 <body>
 <header>
     <ul>
-        <a href="{% url 'article_list' %}"><li>All articles</li></a>
-        <a href="{% url 'user_list' %}"><li>Users</li></a>
-<!--        <li>My articles</li>-->
+        <a href="{% url 'article_list' %}">
+            <li>{% trans 'All articles' %}</li>
+        </a>
+        <a href="{% url 'user_list' %}">
+            <li>{% trans 'Users' %}</li>
+        </a>
+        <li class="lang">
+            <form action="{% url 'set_language' %}" method="post" id="lang_form">{% csrf_token %}
+                <select name="language" onchange="document.getElementById('lang_form').submit();">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for lang in languages %}
+                    <option value="{{ lang.code }}"
+                            {% if lang.code == LANGUAGE_CODE %} selected {% endif %}>
+                        {{ lang.name_local }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </li>
+        <!--        <li>My articles</li>-->
     </ul>
+
 </header>
 {% block main %}
 

@@ -24,3 +24,18 @@ header ul li {
 header ul li:hover {
     background-color: darkslategrey;
 }
+
+header ul li select {
+    font-size: 1em;
+    background: transparent;
+    border: none;
+}
+
+li.lang {
+    height: -webkit-fill-available;
+    margin-right: 5mm;
+    float: right;
+}
+header ul li select:active {
+    border: none;
+}

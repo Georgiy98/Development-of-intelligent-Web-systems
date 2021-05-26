@@ -8,7 +8,7 @@ class Article(models.Model):
     content = models.TextField(null=False, verbose_name=_('content'))
     image = models.ImageField(null=True, upload_to='static', verbose_name=_('image'))
     user_id = CurrentUserField(verbose_name=_('author'))
-    similar_article_ids = models.ManyToManyField('self', verbose_name=_('similar articles'))
+    similar_article_ids = models.ManyToManyField('self', blank=True, verbose_name=_('similar articles'))
 
     def __str__(self):
         return self.title
